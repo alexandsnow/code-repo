@@ -10,6 +10,11 @@ public class GyStarter {
     private static final Logger logger = LogManager.getLogger(GyStarter.class);
 
     public static void main(String[] args) {
+//        GyStarter.testConcurrent();
+        GyStarter.testReentrantLock();
+    }
+
+    public static void testConcurrent(){
         logger.info("main thread begin run!");
         CountDownLatch countDownLatch = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
@@ -23,5 +28,15 @@ public class GyStarter {
             e.printStackTrace();
         }
         logger.info("main thread run over!!!");
+    }
+
+    public static void testReentrantLock(){
+        Thread[] threads = new Thread[10];
+        DrawUtil drawUtil = new DrawUtil();
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new GyLock(drawUtil);
+            threads[i].setName("thread "+i);
+            threads[i].start();
+        }
     }
 }
