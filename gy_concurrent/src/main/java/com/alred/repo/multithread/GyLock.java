@@ -12,9 +12,9 @@ import java.util.concurrent.locks.ReentrantLock;
 public class GyLock extends Thread {
     private static final Logger logger = LogManager.getLogger(GyLock.class);
 
-    private DrawUtil drawUtil;
+    private DrawService drawUtil;
 
-    public GyLock(DrawUtil drawUtil) {
+    public GyLock(DrawService drawUtil) {
         this.drawUtil = drawUtil;
     }
 
@@ -26,8 +26,8 @@ public class GyLock extends Thread {
     }
 }
 
-class DrawUtil{
-    private static final Logger logger = LogManager.getLogger(DrawUtil.class);
+class DrawService{
+    private static final Logger logger = LogManager.getLogger(DrawService.class);
     private Lock lock = new ReentrantLock();
 
     public void showObjectLockThread() {

@@ -32,7 +32,7 @@ public class GyStarter {
 
     public static void testReentrantLock(){
         Thread[] threads = new Thread[10];
-        DrawUtil drawUtil = new DrawUtil();
+        DrawService drawUtil = new DrawService();
         for (int i = 0; i < threads.length; i++) {
             threads[i] = new GyLock(drawUtil);
             threads[i].setName("thread "+i);
