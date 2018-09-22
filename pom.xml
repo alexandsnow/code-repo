@@ -10,6 +10,7 @@
     <modules>
         <module>./gy_concurrent</module>
         <module>./gy_queue</module>
+        <module>./gy_java8</module>
     </modules>
     <name>base</name>
 
