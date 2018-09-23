@@ -18,25 +18,17 @@ public class GyRunnable {
         GyFunctionalInterface gyFunctionalInterface1 = UserDto::showUserInfo;
         GyFunctionalInterface gyFunctionalInterface2 = System.out::println;
         GyFunctionalInterface gyFunctionalInterface3 = userDto::myTest;
+        GyFunctionalInterface gyFunctionalInterface4 = userDto::showInfo;
         gyFunctionalInterface.show(userDto);
         gyFunctionalInterface1.show(userDto);
         gyFunctionalInterface2.show(userDto);
         gyFunctionalInterface3.show(userDto);
-
-
-        Consumer<String> consumer = System.out::println;
-        List<String> userNameList = new ArrayList<String>(){{
-            add("GaoYang");
-            add("Intellij");
-        }};
-
-        userNameList.forEach(consumer);
-        System.out.println(userNameList.stream().collect(Collectors.joining(" | ")));
+        gyFunctionalInterface4.show(userDto);
     }
 }
 
 @FunctionalInterface
-interface GyFunctionalInterface<T extends UserDto> {
+interface GyFunctionalInterface<T extends UserDto,v> {
 
     default void test() {
         System.out.println("test");
@@ -67,6 +59,10 @@ class UserDto {
 
     public static void showUserInfo(UserDto userDto) {
         System.out.println("showUserInfo method : " + userDto.toString());
+    }
+
+    public void showInfo(UserDto userDto){
+        System.out.println("non-static method call: "+userDto.toString());
     }
 
     public void myTest(UserDto userDto){
